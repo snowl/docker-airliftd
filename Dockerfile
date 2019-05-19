@@ -5,7 +5,9 @@ LABEL maintainer="airlift test"
 ENV AIRLIFT_VERSION 0.3.3
 ENV PKG_RELEASE O
 
-RUN groupadd -r airliftd && useradd -r -g airliftd airliftd
+#RUN groupadd -r airliftd && useradd -r -g airliftd airliftd
+
+RUN groupadd -g 9000 airliftd && useradd -r -u 9000 -g airliftd airliftd
 
 RUN apt-get update && apt-get -y install curl \
     && curl -L -o /tmp/airliftd-v0.3.3-linux_amd64.tar.gz https://github.com/moshee/airlift/releases/download/v0.3.3/airliftd-v0.3.3-linux_amd64.tar.gz \
